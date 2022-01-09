@@ -10,3 +10,7 @@ Here are the main steps constructing the program:
 5.output the huffman code.  
 6.output the encrypted input from step1.  
 
+Some rules in constructing the program:  
+1.I used the letter with the smallest ASCII code as the representative of a subtree.  
+2.In case of ambiguity, I selected the two trees with the smallest representatives and when combining the two trees, the one with the smaller representative was on the left.  
+

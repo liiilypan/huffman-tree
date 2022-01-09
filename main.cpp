@@ -96,7 +96,6 @@ tNode* huffman(char cha[200],int freqT[200],int n, tNode tParent[n], tNode tLeaf
     while(n1>=2){ //each i represent a step in constructing the huffman tree
         int rep[2]; // find the two trees with the smallest representatives and combine them
         small(rep,iPtr,n1);
-        //cout << rep[0] << " " << rep[1] << endl;
 
         tParent[n-n1]={iPtr[rep[0]]->c, iPtr[rep[0]]->freq+iPtr[rep[1]]->freq,false, NULL, iPtr[rep[0]], iPtr[rep[1]]};
         iPtr[rep[0]]->p = &tParent[n-n1];
@@ -107,18 +106,8 @@ tNode* huffman(char cha[200],int freqT[200],int n, tNode tParent[n], tNode tLeaf
             iPtr[i] = iPtr[i+1];
         }
 
-        //cout << n1 << endl;
-        //for(int i=0; i<n1; i++) {
-          //  cout << iPtr[i]->c << " ";
-        //}
-        //cout << endl;
-        //for(int i=0; i<n1; i++) {
-          //  cout << iPtr[i]->freq << " ";
-        //}
-        //cout << endl;
         n1--;
     }
-    //cout << iPtr[0]->c << " " << iPtr[0]->freq << endl;
 
     return iPtr[0]; // return the root of the tree;
 }
@@ -198,9 +187,6 @@ void writeFile2(char cha[100], string code[100], string s, int n){
     fout.close();
 }
 
-
-
-
 int main() {
     char nFile[]="test3_input_file.txt";
     string s=readFile(nFile); //read the input file
@@ -210,25 +196,13 @@ int main() {
     int n=0;
     freqTable(cha,freqT,n,s); //construct the frequency table
     sort(cha,freqT,n); //sort the frequency table s.t. representatives are in increasing order
-    //for(int i=0; i<n; i++){
-      //  cout << cha[i] << " ";
-    //}
-    //cout << endl;
-    //for(int i=0; i<n; i++){
-      //  cout << freqT[i] << " ";
-    //}
-    //cout << endl;
 
     struct tNode tParent[n];
     struct tNode tLeaf[n];
     tNode *Root = huffman(cha,freqT,n,tParent,tLeaf);
-    //cout << Root->c << " " << Root->freq << endl;
 
     string code[n];
     getCode(Root,cha,n,code);
-    //for(int i=0; i<n; i++){
-      //  cout << cha[i] << "  " << code[i] << endl;
-    //}
 
     double lf=0,f=0;
     for(int i=0; i< n;i++) {
@@ -236,7 +210,6 @@ int main() {
         f += freqT[i];
     }
     double ave= lf/f;
-    //out << ave << endl;
 
     writeFile1(cha,code,ave,n);
     writeFile2(cha,code,s,n);

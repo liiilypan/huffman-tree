@@ -6,7 +6,7 @@ Here are the main steps constructing the program:
 1.read the input file.  
 2.construct the frequency table.  
 3.build the huffman tree according to the frequency table.  
-4.encode each letter in the tree and store the code in a table
-5.output the huffman code
-6.output the encrypted letter
+4.encode each letter in the tree and store the code in a table.  
+5.output the huffman code.  
+6.output the encrypted letter.  
 
